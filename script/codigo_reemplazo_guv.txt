@@ -1,0 +1,173 @@
+    
+def reemplazo626a622(int_mes, int_dia):
+    
+    data_conf = Configuracion()
+    barra = r'\\'
+    # TODO: cambiar datos hardcodeados por variables
+    # cambiar por path y nombre de excel 
+    try:
+        excel_path = r'\\sfs-1\\Testing\\Tareas en curso\\GUV\\Pruebas\\2020\\'       
+        workbook = xlrd.open_workbook(excel_path+data_conf.baseline+barra+data_conf.excel)
+        workbook = xlrd.open_workbook(r'\\sfs-1\Testing\Tareas en curso\GUV\Pruebas\2020\BSLN_UV_AP_TEST_01-00-80-06_20200204-1900\MR Col Ext V.80.07.xls')
+    except Exception as err:
+                print("El documento: "+ data_conf.excel + " no existe", err)
+                sys.exit()
+    # el nombre de esta hoja cambia con el dia en que se ejecuta el robot
+    try:
+        worksheet = workbook.sheet_by_name(data_conf.sheet)
+    except Exception as err:
+                print("La hoja: "+ data_conf.sheet + " no existe",err)
+    num_rows = worksheet.nrows - 1
+
+    lista_num_cheque_excel_dep=['']
+    lista_num_cheque_excel_gir=['']
+    lista_mrdep_excel=['']
+    lista_mrgir_excel=['']
+    
+    curr_row = -1
+    while curr_row < 82:
+            curr_row += 1
+            if curr_row < 40:
+                if worksheet.cell(curr_row, 1).ctype == 2:
+                    if worksheet.cell(curr_row, 0).value != 'AJUSTE 001':
+                        lista_num_cheque_excel_dep.append(int(worksheet.cell(curr_row,1).value))
+                        lista_mrdep_excel.append(int(worksheet.cell(curr_row,5).value))
+                    else:
+                        lista_num_cheque_excel_dep.append(88888888)
+                        lista_mrdep_excel.append(int(worksheet.cell(curr_row,5).value))
+            if curr_row > 39:
+                if worksheet.cell(curr_row, 1).ctype == 2 and worksheet.cell(curr_row, 6).value != '':
+                    lista_num_cheque_excel_gir.append(int(worksheet.cell(curr_row,1).value))
+                    lista_mrgir_excel.append(int(worksheet.cell(curr_row,6).value))
+    lista_num_cheque_excel_dep.remove('')
+    lista_num_cheque_excel_gir.remove('')
+    lista_mrdep_excel.remove('')
+    lista_mrgir_excel.remove('')
+
+           
+    # TODO: contar filas en archivo de salida y reemplazar esa cantidad
+    listade622 = ['']
+    listade626 = ['']
+    traceback622 = ['']
+    traceback626 = ['']
+#    lista_cheques = ['']
+#    lista_mrdep = ['']
+#    lista_mrgir = ['']
+    
+    
+    for i in range(0,2):
+        ## Abrir archivo de texto
+        str_dia = str(int_dia)
+        if len(str_dia) == 1:
+            str_dia = "0" + str_dia
+        
+        str_mes = str(int_mes)
+        if len(str_mes) == 1:
+            str_mes = "0" + str_mes
+        
+        if (i==0): #626 CRP02043
+            #str_archivo_entrada = data_conf.path + barra + 'CRP' + str_dia + str_mes + '3.191'
+            str_archivo_entrada = r"D:\Users\rvescobar\Documents\python\robot recibidas enviadas\script\CRP02073.191"
+            print(str_archivo_entrada)      
+            
+            try:
+                with open(str_archivo_entrada, 'r') as infile:
+                    data = infile.read()
+                    my_list = data.splitlines()
+            except Exception as err:
+                print("Ocurrió un error al abrir archivo de entrada: ", err)
+                sys.exit()
+            
+            for line in range(len(my_list)):
+                if "626" in my_list[line][0:3]:
+                    listade622.append(my_list[line][3:64])
+                if "799" in my_list[line][0:3]:
+                    traceback622.append(my_list[line][6:21])
+            listade622.remove('')
+            traceback622.remove('')
+            
+#            str_archivo_salida = r"D:\Users\rvescobar\Documents\python\robot recibidas enviadas\script\CR004002.191"
+#            try:
+#                with open(str_archivo_salida, 'r') as file:
+#                    datos = file.read()
+#                    mi_lista = datos.splitlines()
+#            except Exception as err:
+#                print("Ocurrió un error al crear archivo de configuración: {}, {} "
+#                      .format(str_archivo_salida, err))
+#                sys.exit()
+        
+        if (i==1): #622 CRP02041
+            #str_archivo_entrada = data_conf.path + barra + 'CRP' + str_dia + str_mes +'1.191'
+            str_archivo_entrada = r"D:\Users\rvescobar\Documents\python\robot recibidas enviadas\script\CRP02071.191"
+            print(str_archivo_entrada)      
+            
+            try:
+                with open(str_archivo_entrada, 'r') as infile:
+                    data = infile.read()
+                    my_list = data.splitlines()
+            except Exception as err:
+                print("Ocurrió un error al abrir archivo de entrada: ", err)
+                sys.exit()
+            
+            
+            for line in range(len(my_list)):
+                if "622" in my_list[line][0:3]:
+                    listade626.append(my_list[line][3:64])
+                    traceback626.append(my_list[line][79:])
+            listade626.remove('')
+            traceback626.remove('')
+            
+            # Guardado en archivo CR0
+            #str_archivo_salida = r"D:\Users\rvescobar\Documents\python\robot recibidas enviadas\script\CR006002.191"
+            str_archivo_salida2 = r"D:\Users\rvescobar\Documents\python\robot recibidas enviadas\script\CR0"+str_dia+"002.191"
+            try:
+                with open(str_archivo_salida2, 'r') as file:
+                    data = file.read()
+                    my_list = data.splitlines()
+                outfile = open(str_archivo_salida2, 'w')
+            except Exception as err:
+                print("Ocurrió un error al crear archivo: {}, {} "
+                      .format(str_archivo_salida2, err))
+                sys.exit()
+            
+            linea622 = -1
+            linea626 = -1
+            linea_traceback622 = 0
+            linea_traceback626 = 0
+            mrdep = 0
+            mrgir = 0
+            indexdep = 0
+            indexgir = 0
+            
+            for line in range(len(my_list)):
+                # Reemplazo de 622
+                if "622" in my_list[line][0:3]:
+                    linea622+=1
+                    if int(listade622[linea622][43:51]) in lista_num_cheque_excel_dep:
+                        indexdep = lista_num_cheque_excel_dep.index(int(listade622[linea622][43:51]))
+                        mrdep = str(lista_mrdep_excel[indexdep])
+                        if len(mrdep) == 1:
+                            mrdep = "0" + mrdep
+                        outfile.write(str(my_list[line][0:3])+str(listade622[linea622])+str(mrdep)+str(my_list[line][66:79])+str(traceback622[linea_traceback622])+'\n')
+                    linea_traceback622+=1
+                    
+                # Reemplazo de 626
+                if "626" in my_list[line][0:3]:
+                    linea626+=1 
+
+                    if "799" in my_list[line+1][0:3]:
+                        if int(listade626[linea626][43:51]) in lista_num_cheque_excel_gir:
+                            indexgir = lista_num_cheque_excel_gir.index(int(listade626[linea626][43:51]))
+                            mrgir = str(lista_mrgir_excel[indexgir])
+                            if len(mrgir) == 1:
+                                mrgir = "0" + mrgir
+                            outfile.write(str(my_list[line][0:3])+str(listade626[linea626])+str(my_list[line][64:])+'\n')
+                            outfile.write(str(my_list[line+1][0:4])+str(mrgir)+str(traceback626[linea_traceback626])+'      '+str(listade626[linea626][0:8])+str(my_list[line+1][35:])+'\n')
+                            linea_traceback626+=1                 
+                if "626" not in my_list[line][0:3] and "622" not in my_list[line][0:3] and "799" not in my_list[line][0:3]:
+                    outfile.write(my_list[line]+'\n')
+            outfile.close()
+        
+        
+    print("Finalizó el proceso de reemplazo.\nSe ha creado el siguiente archivo:\n")
+    print(str_archivo_salida2)

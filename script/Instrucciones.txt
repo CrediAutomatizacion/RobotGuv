@@ -1,0 +1,6 @@
+1- Ejecutar "robot.exe".
+2- Ingresar mes en números y presionar enter.
+3- Ingresar día en números y presionar enter.
+4- Ingresar "s" y presionar enter para cambiar la baseline, luego copiar el nombre de la baseline, pegarlo en la terminal y presionar enter.
+4.1- Ingresar "n" y presionar enter si no se desea cambiar la baseline.
+5- Esperar sin utilizar la computadora.

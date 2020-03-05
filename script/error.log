@@ -1,0 +1,206 @@
+ERROR:root:Mon Mar  2 10:27:56 2020No windows for that process could be found
+Traceback (most recent call last):
+  File "D:/Users/rvescobar/Documents/python/robot recibidas enviadas/script/copiado.py", line 111, in <module>
+    app_ventana_abrir = app.top_window()
+  File "D:\Anaconda3\lib\site-packages\pywinauto\application.py", line 1156, in top_window
+    raise RuntimeError("No windows for that process could be found")
+RuntimeError: No windows for that process could be found
+ERROR:root:Mon Mar  2 10:41:25 2020
+Traceback (most recent call last):
+  File "d:/users/rvescobar/documents/python/robot recibidas enviadas/script/copiado.py", line 51, in <module>
+    print("No utilizar la computadora hasta que finalice el robot.")
+  File "d:/users/rvescobar/documents/python/robot recibidas enviadas/script/copiado.py", line 51, in <module>
+    print("No utilizar la computadora hasta que finalice el robot.")
+  File "D:\Anaconda3\lib\bdb.py", line 88, in trace_dispatch
+    return self.dispatch_line(frame)
+  File "D:\Anaconda3\lib\bdb.py", line 113, in dispatch_line
+    if self.quitting: raise BdbQuit
+bdb.BdbQuit
+ERROR:root:Mon Mar  2 10:43:06 2020
+Traceback (most recent call last):
+  File "d:/users/rvescobar/documents/python/robot recibidas enviadas/script/copiado.py", line 51, in <module>
+    print("No utilizar la computadora hasta que finalice el robot.")
+  File "d:/users/rvescobar/documents/python/robot recibidas enviadas/script/copiado.py", line 51, in <module>
+    print("No utilizar la computadora hasta que finalice el robot.")
+  File "D:\Anaconda3\lib\bdb.py", line 88, in trace_dispatch
+    return self.dispatch_line(frame)
+  File "D:\Anaconda3\lib\bdb.py", line 113, in dispatch_line
+    if self.quitting: raise BdbQuit
+bdb.BdbQuit
+ERROR:root:Mon Mar  2 16:21:06 2020
+Traceback (most recent call last):
+  File "D:/Users/rvescobar/Documents/python/robot recibidas enviadas/script/copiado.py", line 158, in <module>
+    app_ventana_buscar.FocusButton.click()
+  File "D:\Anaconda3\lib\site-packages\pywinauto\controls\win32_controls.py", line 218, in click
+    hwndwrapper.HwndWrapper.click(self, button, pressed, coords, double, absolute)
+  File "D:\Anaconda3\lib\site-packages\pywinauto\controls\hwndwrapper.py", line 749, in click
+    self.verify_actionable()
+  File "D:\Anaconda3\lib\site-packages\pywinauto\base_wrapper.py", line 681, in verify_actionable
+    self.verify_enabled()
+  File "D:\Anaconda3\lib\site-packages\pywinauto\base_wrapper.py", line 692, in verify_enabled
+    raise ElementNotEnabled()
+pywinauto.base_wrapper.ElementNotEnabled
+ERROR:root:Mon Mar  2 17:22:24 2020
+Traceback (most recent call last):
+  File "d:/users/rvescobar/documents/python/robot recibidas enviadas/script/copiado.py", line 174, in <module>
+    app_ventana_buscar.FocusButton.click()
+  File "D:\Anaconda3\lib\site-packages\pywinauto\controls\win32_controls.py", line 218, in click
+    hwndwrapper.HwndWrapper.click(self, button, pressed, coords, double, absolute)
+  File "D:\Anaconda3\lib\site-packages\pywinauto\controls\hwndwrapper.py", line 749, in click
+    self.verify_actionable()
+  File "D:\Anaconda3\lib\site-packages\pywinauto\base_wrapper.py", line 681, in verify_actionable
+    self.verify_enabled()
+  File "D:\Anaconda3\lib\site-packages\pywinauto\base_wrapper.py", line 692, in verify_enabled
+    raise ElementNotEnabled()
+pywinauto.base_wrapper.ElementNotEnabled
+ERROR:root:Mon Mar  2 17:25:23 2020
+Traceback (most recent call last):
+  File "d:/users/rvescobar/documents/python/robot recibidas enviadas/script/copiado.py", line 175, in <module>
+    app_ventana_buscar.FocusButton.click()
+  File "D:\Anaconda3\lib\site-packages\pywinauto\controls\win32_controls.py", line 218, in click
+    hwndwrapper.HwndWrapper.click(self, button, pressed, coords, double, absolute)
+  File "D:\Anaconda3\lib\site-packages\pywinauto\controls\hwndwrapper.py", line 749, in click
+    self.verify_actionable()
+  File "D:\Anaconda3\lib\site-packages\pywinauto\base_wrapper.py", line 681, in verify_actionable
+    self.verify_enabled()
+  File "D:\Anaconda3\lib\site-packages\pywinauto\base_wrapper.py", line 692, in verify_enabled
+    raise ElementNotEnabled()
+pywinauto.base_wrapper.ElementNotEnabled
+ERROR:root:Mon Mar  2 17:30:58 2020
+Traceback (most recent call last):
+  File "d:/users/rvescobar/documents/python/robot recibidas enviadas/script/copiado.py", line 177, in <module>
+    app_ventana_buscar.type_keys('{S}')
+  File "D:\Anaconda3\lib\site-packages\pywinauto\controls\win32_controls.py", line 218, in click
+    hwndwrapper.HwndWrapper.click(self, button, pressed, coords, double, absolute)
+  File "D:\Anaconda3\lib\site-packages\pywinauto\controls\hwndwrapper.py", line 749, in click
+    self.verify_actionable()
+  File "D:\Anaconda3\lib\site-packages\pywinauto\base_wrapper.py", line 681, in verify_actionable
+    self.verify_enabled()
+  File "D:\Anaconda3\lib\site-packages\pywinauto\base_wrapper.py", line 692, in verify_enabled
+    raise ElementNotEnabled()
+pywinauto.base_wrapper.ElementNotEnabled
+ERROR:root:Mon Mar  2 17:35:23 2020
+Traceback (most recent call last):
+  File "d:/users/rvescobar/documents/python/robot recibidas enviadas/script/copiado.py", line 238, in <module>
+    reemplazo626a622(str_mes, str_dia)
+  File "d:/users/rvescobar/documents/python/robot recibidas enviadas/script/copiado.py", line 238, in <module>
+    reemplazo626a622(str_mes, str_dia)
+  File "D:\Anaconda3\lib\bdb.py", line 88, in trace_dispatch
+    return self.dispatch_line(frame)
+  File "D:\Anaconda3\lib\bdb.py", line 113, in dispatch_line
+    if self.quitting: raise BdbQuit
+bdb.BdbQuit
+ERROR:root:Tue Mar  3 15:44:22 2020'<' not supported between instances of 'str' and 'int'
+Traceback (most recent call last):
+  File "D:/Users/rvescobar/Documents/python/robot recibidas enviadas/script/copiado.py", line 245, in <module>
+    generar(str_mes, str_dia)
+  File "D:\Users\rvescobar\Documents\python\robot recibidas enviadas\script\Reemplazo.py", line 352, in generar
+    if len(dia_menos<2):
+TypeError: '<' not supported between instances of 'str' and 'int'
+ERROR:root:Tue Mar  3 15:56:58 2020
+Traceback (most recent call last):
+  File "d:/users/rvescobar/documents/python/robot recibidas enviadas/script/copiado.py", line 247, in <module>
+    from winscp_crecer import subida_crecer
+  File "d:/users/rvescobar/documents/python/robot recibidas enviadas/script/copiado.py", line 247, in <module>
+    from winscp_crecer import subida_crecer
+  File "D:\Anaconda3\lib\bdb.py", line 88, in trace_dispatch
+    return self.dispatch_line(frame)
+  File "D:\Anaconda3\lib\bdb.py", line 113, in dispatch_line
+    if self.quitting: raise BdbQuit
+bdb.BdbQuit
+ERROR:root:Error occurred 
+Traceback (most recent call last):
+  File "D:\Users\rvescobar\Documents\python\robot recibidas enviadas\script\subida.py", line 84, in subida_crecer
+    app.top_window().type_keys('+{F4}')
+  File "D:\Anaconda3\lib\site-packages\pywinauto\base_wrapper.py", line 937, in type_keys
+    self.verify_actionable()
+  File "D:\Anaconda3\lib\site-packages\pywinauto\base_wrapper.py", line 681, in verify_actionable
+    self.verify_enabled()
+  File "D:\Anaconda3\lib\site-packages\pywinauto\base_wrapper.py", line 692, in verify_enabled
+    raise ElementNotEnabled()
+pywinauto.base_wrapper.ElementNotEnabled
+ERROR:root:Error occurred {'title_re': '/opt/guv/coelsa/enviados.*', 'class_name': 'TEditorForm', 'backend': 'win32', 'visible_only': False}
+Traceback (most recent call last):
+  File "D:\Users\rvescobar\Documents\python\robot recibidas enviadas\script\subida.py", line 101, in subida_crecer
+    app_ventana_editor = Application().connect(title_re=r'/opt/guv/coelsa/enviados.*', class_name='TEditorForm')
+  File "D:\Anaconda3\lib\site-packages\pywinauto\application.py", line 997, in connect
+    self.process = findwindows.find_element(**kwargs).process_id
+  File "D:\Anaconda3\lib\site-packages\pywinauto\findwindows.py", line 87, in find_element
+    raise ElementNotFoundError(kwargs)
+pywinauto.findwindows.ElementNotFoundError: {'title_re': '/opt/guv/coelsa/enviados.*', 'class_name': 'TEditorForm', 'backend': 'win32', 'visible_only': False}
+ERROR:root:Error occurred 
+Traceback (most recent call last):
+  File "D:\Users\rvescobar\Documents\python\robot recibidas enviadas\script\subida.py", line 98, in subida_crecer
+    app_ventana_nuevo.type_keys('{ENTER}')
+  File "D:\Users\rvescobar\Documents\python\robot recibidas enviadas\script\subida.py", line 98, in subida_crecer
+    app_ventana_nuevo.type_keys('{ENTER}')
+  File "D:\Anaconda3\lib\bdb.py", line 88, in trace_dispatch
+    return self.dispatch_line(frame)
+  File "D:\Anaconda3\lib\bdb.py", line 113, in dispatch_line
+    if self.quitting: raise BdbQuit
+bdb.BdbQuit
+ERROR:root:Error occurred [Errno 2] No such file or directory: 'robot.CRUV.BAT.INT.ACRED.GUV.CR.CRT2.DLNX'
+Traceback (most recent call last):
+  File "D:\Users\rvescobar\Documents\python\robot recibidas enviadas\script\subida.py", line 113, in subida_crecer
+    text_file = open('robot.CRUV.BAT.INT.ACRED.GUV.CR.CRT2.DLNX','r')
+FileNotFoundError: [Errno 2] No such file or directory: 'robot.CRUV.BAT.INT.ACRED.GUV.CR.CRT2.DLNX'
+ERROR:root:Error occurred 
+Traceback (most recent call last):
+  File "D:\Users\rvescobar\Documents\python\robot recibidas enviadas\script\subida.py", line 109, in subida_crecer
+    app_ventana_editor.type_keys('^a')
+  File "D:\Anaconda3\lib\site-packages\pywinauto\base_wrapper.py", line 937, in type_keys
+    self.verify_actionable()
+  File "D:\Anaconda3\lib\site-packages\pywinauto\base_wrapper.py", line 680, in verify_actionable
+    self.verify_visible()
+  File "D:\Anaconda3\lib\site-packages\pywinauto\base_wrapper.py", line 703, in verify_visible
+    raise ElementNotVisible()
+pywinauto.base_wrapper.ElementNotVisible
+ERROR:root:Error occurred 
+Traceback (most recent call last):
+  File "D:\Users\rvescobar\Documents\python\robot recibidas enviadas\script\subida.py", line 115, in subida_crecer
+    line_list = text_file.readlines();
+  File "D:\Users\rvescobar\Documents\python\robot recibidas enviadas\script\subida.py", line 115, in subida_crecer
+    line_list = text_file.readlines();
+  File "D:\Anaconda3\lib\bdb.py", line 88, in trace_dispatch
+    return self.dispatch_line(frame)
+  File "D:\Anaconda3\lib\bdb.py", line 113, in dispatch_line
+    if self.quitting: raise BdbQuit
+bdb.BdbQuit
+ERROR:root:Error occurred timed out
+Traceback (most recent call last):
+  File "D:\Users\rvescobar\Documents\python\robot recibidas enviadas\script\subida.py", line 159, in subida_crecer
+    app_ventana_editor.close()
+  File "D:\Anaconda3\lib\site-packages\pywinauto\controls\hwndwrapper.py", line 1178, in close
+    has_closed
+  File "D:\Anaconda3\lib\site-packages\pywinauto\timings.py", line 375, in wait_until
+    raise err
+pywinauto.timings.TimeoutError: timed out
+ERROR:root:Tue Mar  3 17:57:51 2020No module named 'winscp_crecer'
+Traceback (most recent call last):
+  File "D:/Users/rvescobar/Documents/python/robot recibidas enviadas/script/copiado.py", line 252, in <module>
+    from winscp_crecer import subida_crecer
+ModuleNotFoundError: No module named 'winscp_crecer'
+ERROR:root:Wed Mar  4 09:27:50 2020No module named 'winscp_crecer'
+Traceback (most recent call last):
+  File "d:/users/rvescobar/documents/python/robot recibidas enviadas/script/copiado.py", line 6, in <module>
+    """
+ModuleNotFoundError: No module named 'winscp_crecer'
+ERROR:root:Error occurred [Errno 2] No such file or directory: 'CR103352.191robot'
+Traceback (most recent call last):
+  File "D:\Users\rvescobar\Documents\python\robot recibidas enviadas\script\subida.py", line 96, in subida_crecer
+    text_file = open(data_conf.str_cr1,'r')
+FileNotFoundError: [Errno 2] No such file or directory: 'CR103352.191robot'
+ERROR:root:Error occurred [Errno 2] No such file or directory: 'CH003002.191robot'
+Traceback (most recent call last):
+  File "D:\Users\rvescobar\Documents\python\robot recibidas enviadas\script\subida.py", line 98, in subida_crecer
+    text_file = open(data_conf.str_ch0,'r')
+FileNotFoundError: [Errno 2] No such file or directory: 'CH003002.191robot'
+ERROR:root:Error occurred {'title_re': '/opt/guv/coelsa/enviados.*', 'class_name': 'TEditorForm', 'backend': 'win32', 'visible_only': False}
+Traceback (most recent call last):
+  File "D:\Users\rvescobar\Documents\python\robot recibidas enviadas\script\subida.py", line 111, in subida_crecer
+    app_ventana_editor = Application().connect(title_re=r'/opt/guv/coelsa/enviados.*', class_name='TEditorForm')
+  File "D:\Anaconda3\lib\site-packages\pywinauto\application.py", line 997, in connect
+    self.process = findwindows.find_element(**kwargs).process_id
+  File "D:\Anaconda3\lib\site-packages\pywinauto\findwindows.py", line 87, in find_element
+    raise ElementNotFoundError(kwargs)
+pywinauto.findwindows.ElementNotFoundError: {'title_re': '/opt/guv/coelsa/enviados.*', 'class_name': 'TEditorForm', 'backend': 'win32', 'visible_only': False}

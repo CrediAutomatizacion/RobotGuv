@@ -1,0 +1,20 @@
+{
+    "FECHA": "03/03/20",
+    "BASELINE": "BSLN_UV_AP_TEST_01-00-80-10_20200218-1200",
+    "EXCEL": "MR Col Ext V.80.10.xls",
+    "SHEET": "03_03",
+    "PATH": "D:\\Users\\rvescobar\\Documents\\python\\robot recibidas enviadas\\script",
+    "CABECERA_ARCH": "101 019101910 0000000102002071808C094101CREDICOP              1COEL S.A.                     0",
+    "CABECERA_LOTE": "5200                                              TRCREVERSAL  2002062002070001028502850000002",
+    "CTRL_FIN_LOTE": "82000000240045844733000000000000000083875313                                   028502850000002",
+    "CTRL_FIN_ARCH": "9000064000192000017811874315503003399086856002172843477                                      0",
+    "CABECERA_ARCH_D": "101 069101910 0500000102002071808N094101CREDICOP               COELSA                        0",
+    "CABECERA_LOTE_D": "5200                                    0000000000TRC          2002062002070001069101910000001",
+    "CTRL_FIN_LOTE_D": "82000000000000000000000000000000000000000000                                   069101910000001",
+    "CTRL_FIN_ARCH_D": "9000001000001000000000000000000000000000000000000000000                                      0",
+    "STR_CR0": "CR003002.191robot",
+    "STR_CR1": "CR103352.191robot",
+    "STR_CH0": "CH003072.191robot",
+    "STR_CH1": "CH103288.191robot",
+    "STR_CRN": "CRN03129.191robot"
+}
