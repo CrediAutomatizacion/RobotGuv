@@ -61,7 +61,7 @@ def dia_valido(dia, mes):
     if not dia:
         return False
     if dia.isdigit():
-        return 0 < int(dia) < dias_x_mes[mes - 1]
+        return 0 < int(dia) <= dias_x_mes[mes - 1]
     return False
 
 def renombradoFecha(int_mes, int_dia, dir_path):
