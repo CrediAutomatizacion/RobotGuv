@@ -1,0 +1,16 @@
+V.3:
+-Se agregó archivo .gitignore y se borró de git los archivos y carpetas de paquetes o cosas que no deberían estar subidas.
+-Se agregó archivo requirements.txt, el cual especifica que paquetes deben ser instalados para que el script funcione.
+
+V.2:
+-Agregado:
+	-Traspaso de 622 a 626 y de 626 a 622 de los archivos CRDmmdd1.191 y CRDmmdd3.191.
+	-Generación de archivo CR1dd352.191 con los datos anteriores.
+
+V.1:
+-Descarga de archivos. (CRPmmdd1.191, CRPmmdd2.191, CRPmmdd3.191, CRDmmdd1.191, CRDmmdd3.191)
+-Reemplazo de fechas en los archivos descargados.
+-Generación de datos tras el traspaso de 622 a 626 y de 626 a 622 de los archivos CRPmmdd1.191 y CRPmmdd3.191.
+-Generación de archivo CR0dd002.191 con los datos anteriores.
+-Renombrado de archivos descargados.
+-Subida de archivos renombrados y generados.
