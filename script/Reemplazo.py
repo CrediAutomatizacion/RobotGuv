@@ -7,11 +7,14 @@ Created on Wed Jan 29 10:39:02 2020
 Script que reemplaza datos de los archivos CRDdd041, CRDdd043, CRPdd041, CRPdd042
 y CRPdd043 (donde dd es la fecha del día) y además los renombra y rediseña.
 
+Edited by: Melina Urruchua - Jan 22 2021
 
 """
 import json
-import sys, xlrd, random
+import sys, xlrd, datetime
 from random import randint
+import paramiko
+from scp import SCPClient
 
 class Configuracion:
     """Clase que toma los distintos valores para de la aplicacion desde el
@@ -45,8 +48,16 @@ class Configuracion:
         self.cab_lote_d = config.get('CABECERA_LOTE_D', '')
         self.fin_lote_d = config.get('CTRL_FIN_LOTE_D', '')
         self.fin_arch_d = config.get('CTRL_FIN_ARCH_D', '')
-        
-        
+
+    
+def createSSHClient(server, port, user, password):
+    """ Conecta con el cliente SSH según el servidor, puerto, usuario y contraseña por parámetro """
+    client = paramiko.SSHClient()
+    client.load_system_host_keys()
+    client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+    client.connect(server, port, user, password)
+    return client
+    
 def mes_valido(mes):
     """ Valida que el mes sea un numero entre 1 y 12 """
     if not mes:
@@ -69,6 +80,8 @@ def renombradoFecha(int_mes, int_dia, dir_path):
     path = dir_path
     int_dia = int(int_dia)
     int_mes = int(int_mes)
+    # año actual ultimos 2 digitos: aa
+    year = datetime.datetime.now().strftime("%y")
     
     for i in range(0,4):
         ## Abrir archivo de texto
@@ -103,9 +116,9 @@ def renombradoFecha(int_mes, int_dia, dir_path):
                 
             for line in range(len(my_list)):
                 if line==0:
-                    outfile.write(my_list[0][0:25] + str_mes + str_dia + my_list[0][29:] + '\n')
+                    outfile.write(my_list[0][0:23] + year + str_mes + str_dia + my_list[0][29:] + '\n')
                 if line==1:
-                    outfile.write(my_list[1][0:65] + str_mes + '0'+ str(int_dia-1) + my_list[1][69:71] + str_mes + str_dia + my_list[1][75:] + '\n')
+                    outfile.write(my_list[1][0:63] + year + str_mes + str(int_dia-1) + year + str_mes + str_dia + my_list[1][75:] + '\n')
                 if line>1: 
                     outfile.write(my_list[line] + '\n')
     
@@ -134,9 +147,9 @@ def renombradoFecha(int_mes, int_dia, dir_path):
                 
             for line in range(len(my_list)):
                 if line==0:
-                    outfile.write(my_list[0][0:25] + str_mes + str_dia + my_list[0][29:] + '\n')
+                    outfile.write(my_list[0][0:23] + year + str_mes + str_dia + my_list[0][29:] + '\n')
                 if line==1:
-                    outfile.write(my_list[1][0:65] + str_mes + '0'+ str(int_dia-1) + my_list[1][69:71] + str_mes + str_dia + my_list[1][75:] + '\n')
+                    outfile.write(my_list[1][0:63] + year + str_mes + str(int_dia-1) + year + str_mes + str_dia + my_list[1][75:] + '\n')
                 if line>1:
                     outfile.write(my_list[line] + '\n')
           
@@ -165,9 +178,9 @@ def renombradoFecha(int_mes, int_dia, dir_path):
                 
             for line in range(len(my_list)):
                 if line==0:
-                    outfile.write(my_list[0][0:25] + str_mes + str_dia + my_list[0][29:] + '\n')
+                    outfile.write(my_list[0][0:23] + year + str_mes + str_dia + my_list[0][29:] + '\n')
                 if line==1:
-                    outfile.write(my_list[1][0:65] + str_mes + '0'+ str(int_dia-1) + my_list[1][69:71] + str_mes + str_dia + my_list[1][75:] + '\n')
+                    outfile.write(my_list[1][0:63] + year + str_mes + str(int_dia-1) + year + str_mes + str_dia + my_list[1][75:] + '\n')
                 if line>1: 
                     outfile.write(my_list[line] + '\n')
     
@@ -178,6 +191,9 @@ def generar(int_mes, int_dia):
     
     data_conf = Configuracion()
     barra = r'\\'
+    
+    # año actual ultimos 2 digitos: aa
+    year = datetime.datetime.now().strftime("%y")
     
     # Abro el excel para leer num de cheques y motivos de rechazo
     try:
@@ -297,8 +313,8 @@ def generar(int_mes, int_dia):
         dia_menos = '0'+dia_menos
     
     # Escribo los encabezados de lote y archivo con la fecha cambiada
-    outfile.write(data_conf.cab_arch_d[:25]+str_mes+str_dia+data_conf.cab_arch_d[29:]+'\n')
-    outfile.write(data_conf.cab_lote_d[:65]+str_mes+dia_menos+'20'+str_mes+str_dia+data_conf.cab_lote_d[75:]+'\n')
+    outfile.write(data_conf.cab_arch_d[:23] + year + str_mes + str_dia + data_conf.cab_arch_d[29:] + '\n')
+    outfile.write(data_conf.cab_lote_d[:63] + year + str_mes + dia_menos + year + str_mes + str_dia + data_conf.cab_lote_d[75:] + '\n')
     
     # Inicializo los contadores para las listas
     linea622 = 0
@@ -432,8 +448,9 @@ def generar(int_mes, int_dia):
         dia_menos = '0'+dia_menos
     
     # Escribo los encabezados de lote y archivo con la fecha cambiada
-    outfile.write(data_conf.cab_arch[:25]+str_mes+str_dia+data_conf.cab_arch[29:]+'\n')
-    outfile.write(data_conf.cab_lote[:65]+str_mes+dia_menos+'20'+str_mes+str_dia+data_conf.cab_lote[75:]+'\n')
+    #CAMBIO: la fecha incluye el año en el que se corre el script
+    outfile.write(data_conf.cab_arch[:23] + year + str_mes + str_dia + data_conf.cab_arch[29:] + '\n')
+    outfile.write(data_conf.cab_lote[:63] + year + str_mes + dia_menos + year + str_mes + str_dia + data_conf.cab_lote[75:] + '\n')
     
     # Inicializo los contadores para las listas
     linea622 = 0
