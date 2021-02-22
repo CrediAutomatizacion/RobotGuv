@@ -7,13 +7,13 @@ Se conecta por SCP al servidor, copia los archivos generados desde la web de Cre
 Para que lo puedan ejecutar las personas que trabajan para el banco sin instalar ningún paquete.
 
 **IMPORTANTE:** Si ya tenés python instalado, verificar la versión con
-		```bash
-		python --version
-		```
+	```
+	python --version
+	```
 y pip debe estar en la version 20.2.4, chequear con 
-		```bash
-		pip --version
-		```
+	```
+	pip --version
+	```
 
 1. Instalar [Python 3.7.4 32 bits](https://www.python.org/ftp/python/3.7.4/python-3.7.4.exe).
 
@@ -23,7 +23,7 @@ y pip debe estar en la version 20.2.4, chequear con
 
 4. Clonar el repositorio del proyecto guv en gitlab
 	1. En caso de ser necesario generar SSH Key, usando el siguiente comando: 
-		```bash
+		```
 		ssh-keygen
 		cat ~/.ssh/id_rsa.pub
 		```
@@ -31,9 +31,9 @@ y pip debe estar en la version 20.2.4, chequear con
 
 
 5. Una vez clonado el repositorio, abrir la terminal bash en la carpeta donde se encuentre el archivo requirements.txt y ejecutar el siguiente comando:
-		```bash
-		pip install -r requirements.txt
-		```
+	```
+	pip install -r requirements.txt
+	```
    este comando instalará las dependencias necesarias para que el proyecto python robot guv funcione. NO ACTUALIZAR ninguno de estos paquetes.
 
 6. Se puede ver y correr el proyecto desde IDLE (IDE por defecto de python) o se puede ver y editar desde cualquier editor de texto.
@@ -42,9 +42,9 @@ y pip debe estar en la version 20.2.4, chequear con
 
 7. Una vez realizados los cambios necesarios, se debe volver a generar el archivo .exe, el cual se ejecuta para poder modificar los archivos del servidor remoto.
    Se ejecutará el siguiente comando desde la carpeta del proyecto:
-		```bash
-		pyinstaller --onefile copiado.py
-		```
+	```
+	pyinstaller --onefile copiado.py
+	```
    Como este archivo se crea a partir de 'copiado.py', va a tener el nombre 'copiado.exe' (se alamacena dentro de las carpeta '/dist'), se debe cambiar a 'robot.exe'
 
 8. Copiar la nueva "versión" en la carpeta compartida '\\sfs-1\Testing\Tareas en curso\GUV\Documentacion\robot guv' (reemplazar el existente)
