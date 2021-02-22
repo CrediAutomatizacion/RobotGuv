@@ -1,6 +1,8 @@
 V.3:
 -Se agregó archivo .gitignore y se borró de git los archivos y carpetas de paquetes o cosas que no deberían estar subidas.
 -Se agregó archivo requirements.txt, el cual especifica que paquetes deben ser instalados para que el script funcione.
+-Se agregó README.
+-Actualización de 622 a 626 para que complete motivo de rechazo en caso de no estar en el excel
 
 V.2:
 -Agregado:
