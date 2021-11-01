@@ -32,6 +32,9 @@ try:
         str_dia = input("Ingrese día proceso:")
     if (len(str_dia) == 1):
         str_dia = '0' + str_dia
+
+    # ingresar numero de paquete
+    pkg = input("Ingrese nro PKG:")
     
     #cargo la baseline desde el json de datos para luego preguntar si hay que cambiarla
     try:
@@ -81,7 +84,7 @@ try:
     
     renombradoFecha(str_mes, str_dia, dir_path)
     time.sleep(1)
-    generar(int(str_mes), int(str_dia))
+    generar(int(str_mes), int(str_dia), pkg)
     time.sleep(1)
     from subida import subida_crecer
     subida_crecer(dir_path, str_mes, str_dia)

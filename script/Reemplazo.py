@@ -82,16 +82,20 @@ def renombradoFecha(int_mes, int_dia, dir_path):
     int_mes = int(int_mes)
     # año actual ultimos 2 digitos: aa
     year = datetime.datetime.now().strftime("%y")
+
+    year = datetime.datetime.now().strftime("%Y")
+    fechaIngresada = datetime.datetime(int(year), int_mes, int_dia)
+    str_dia = fechaIngresada.strftime("%d")
+    str_mes = fechaIngresada.strftime("%m")
+    year = fechaIngresada.strftime("%y")
+
+    fechaAnterior = fechaIngresada - datetime.timedelta(days=1)
+    str_dia_ant = fechaAnterior.strftime("%d")
+    str_mes_ant = fechaAnterior.strftime("%m")
     
     for i in range(0,4):
         ## Abrir archivo de texto
-        str_dia = str(int_dia)
-        if len(str_dia) == 1:
-            str_dia = "0" + str_dia
-        
-        str_mes = str(int_mes)
-        if len(str_mes) == 1:
-            str_mes = "0" + str_mes
+
         
         if(i==0):
             #str_archivo_entrada = path + r'\\' + "CH0" + str_dia + "072.191"
@@ -118,7 +122,7 @@ def renombradoFecha(int_mes, int_dia, dir_path):
                 if line==0:
                     outfile.write(my_list[0][0:23] + year + str_mes + str_dia + my_list[0][29:] + '\n')
                 if line==1:
-                    outfile.write(my_list[1][0:63] + year + str_mes + str(int_dia-1) + year + str_mes + str_dia + my_list[1][75:] + '\n')
+                    outfile.write(my_list[1][0:63] + year + str_mes_ant + str_dia_ant + year + str_mes + str_dia + my_list[1][75:] + '\n')
                 if line>1: 
                     outfile.write(my_list[line] + '\n')
     
@@ -149,7 +153,7 @@ def renombradoFecha(int_mes, int_dia, dir_path):
                 if line==0:
                     outfile.write(my_list[0][0:23] + year + str_mes + str_dia + my_list[0][29:] + '\n')
                 if line==1:
-                    outfile.write(my_list[1][0:63] + year + str_mes + str(int_dia-1) + year + str_mes + str_dia + my_list[1][75:] + '\n')
+                    outfile.write(my_list[1][0:63] + year + str_mes_ant + str_dia_ant + year + str_mes + str_dia + my_list[1][75:] + '\n')
                 if line>1:
                     outfile.write(my_list[line] + '\n')
           
@@ -180,25 +184,38 @@ def renombradoFecha(int_mes, int_dia, dir_path):
                 if line==0:
                     outfile.write(my_list[0][0:23] + year + str_mes + str_dia + my_list[0][29:] + '\n')
                 if line==1:
-                    outfile.write(my_list[1][0:63] + year + str_mes + str(int_dia-1) + year + str_mes + str_dia + my_list[1][75:] + '\n')
+                    outfile.write(my_list[1][0:63] + year + str_mes_ant + str_dia_ant + year + str_mes + str_dia + my_list[1][75:] + '\n')
                 if line>1: 
                     outfile.write(my_list[line] + '\n')
     
             outfile.close()
     
-def generar(int_mes, int_dia):
+def generar(int_mes, int_dia,pkg):
     # TODO: cambiar datos hardcodeados por variables
     
     data_conf = Configuracion()
     barra = r'\\'
-    
-    # año actual ultimos 2 digitos: aa
-    year = datetime.datetime.now().strftime("%y")
-    
+
+
+    year = datetime.datetime.now().strftime("%Y")
+    fechaIngresada = datetime.datetime(int(year), int_mes, int_dia)
+    str_dia= fechaIngresada.strftime("%d")
+    str_mes= fechaIngresada.strftime("%m")
+    year = fechaIngresada.strftime("%y")
+
+    fechaAnterior = fechaIngresada - datetime.timedelta(days=1)
+    str_dia_ant = fechaAnterior.strftime("%d")
+    str_mes_ant = fechaAnterior.strftime("%m")
+
+
+    print (fechaIngresada.strftime("%x"))
+    print (fechaAnterior.strftime("%x"))
+
     # Abro el excel para leer num de cheques y motivos de rechazo
     try:
-        excel_path = r'\\sfs-1\\Testing\\Tareas en curso\\GUV\\Pruebas\\2020\\'       
+        excel_path = r'\\sfs-1\\Testing\\Tareas en curso\\GUV\\Pruebas\\20'+ year+barra+'PKG '+pkg+barra
         workbook = xlrd.open_workbook(excel_path+data_conf.baseline+barra+data_conf.excel)
+        print(data_conf.excel)
         #workbook = xlrd.open_workbook(r'\\sfs-1\Testing\Tareas en curso\GUV\Pruebas\2020\BSLN_UV_AP_TEST_01-00-80-06_20200204-1900\MR Col Ext V.80.07.xls')
     except Exception as err:
                 print("El documento: "+ data_conf.excel + " no existe", err)
@@ -248,13 +265,7 @@ def generar(int_mes, int_dia):
     # Pueblo las listas de datos 622 y 626 CRDmmdd1 y CRDmmdd3
     for i in range(0,2):
         # Abrir archivo de texto
-        str_dia = str(int_dia)
-        if len(str_dia) == 1:
-            str_dia = "0" + str_dia
-        
-        str_mes = str(int_mes)
-        if len(str_mes) == 1:
-            str_mes = "0" + str_mes
+
         
         if (i==0): #622 CRDmmdd1
             str_archivo_entrada = data_conf.path + barra + 'CRD' + str_mes + str_dia +'1.191'
@@ -308,13 +319,10 @@ def generar(int_mes, int_dia):
               .format(str_archivo_salida2, err))
         sys.exit()
     
-    dia_menos = str(int(int_dia)-1)
-    if len(dia_menos)<2:
-        dia_menos = '0'+dia_menos
-    
+
     # Escribo los encabezados de lote y archivo con la fecha cambiada
     outfile.write(data_conf.cab_arch_d[:23] + year + str_mes + str_dia + data_conf.cab_arch_d[29:] + '\n')
-    outfile.write(data_conf.cab_lote_d[:63] + year + str_mes + dia_menos + year + str_mes + str_dia + data_conf.cab_lote_d[75:] + '\n')
+    outfile.write(data_conf.cab_lote_d[:63] + year + str_mes_ant + str_dia_ant + year + str_mes + str_dia + data_conf.cab_lote_d[75:] + '\n')
     
     # Inicializo los contadores para las listas
     linea622 = 0
@@ -380,13 +388,7 @@ def generar(int_mes, int_dia):
     # Pueblo las listas de datos 622 y 626 CRPmmdd1 y CRPmmdd3
     for i in range(0,2):
         # Abrir archivo de texto
-        str_dia = str(int_dia)
-        if len(str_dia) == 1:
-            str_dia = "0" + str_dia
-        
-        str_mes = str(int_mes)
-        if len(str_mes) == 1:
-            str_mes = "0" + str_mes
+
         
         if (i==0): #622 CRPmmdd1
             str_archivo_entrada = data_conf.path + barra + 'CRP' + str_mes + str_dia +'1.191'
@@ -442,15 +444,12 @@ def generar(int_mes, int_dia):
         print("Ocurrió un error al crear archivo: {}, {} "
               .format(str_archivo_salida2, err))
         sys.exit()
-    
-    dia_menos = str(int(int_dia)-1)
-    if len(dia_menos)<2:
-        dia_menos = '0'+dia_menos
+
     
     # Escribo los encabezados de lote y archivo con la fecha cambiada
     #CAMBIO: la fecha incluye el año en el que se corre el script
     outfile.write(data_conf.cab_arch[:23] + year + str_mes + str_dia + data_conf.cab_arch[29:] + '\n')
-    outfile.write(data_conf.cab_lote[:63] + year + str_mes + dia_menos + year + str_mes + str_dia + data_conf.cab_lote[75:] + '\n')
+    outfile.write(data_conf.cab_lote[:63] + year + str_mes_ant + str_dia_ant+ year + str_mes + str_dia + data_conf.cab_lote[75:] + '\n')
     
     # Inicializo los contadores para las listas
     linea622 = 0
