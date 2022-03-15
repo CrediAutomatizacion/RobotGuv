@@ -7,7 +7,7 @@ Este script automatiza la copia de los archivos ACREDITACION y ACREDITACIONRECHA
 Editado por Melina Urruchua - 22 Enero 2021
 """
 import time, os, logging, json, xlrd, pyperclip, time, random, datetime
-from Reemplazo import dia_valido, mes_valido, Configuracion, generar, renombradoFecha, createSSHClient
+from Reemplazo import dia_valido, mes_valido, Configuracion, generar, renombradoFecha, createSSHClient, anio_valido
 from scp import SCPClient
 
 # Inicializa la configuracion del log
@@ -46,12 +46,26 @@ try:
     cambiarBaseline = input("La baseline actual es: " + baseline +', desea cambiarla? S/N\n')
     if cambiarBaseline == 'S' or cambiarBaseline == 's':
         baseline = input("Escriba la nueva baseline: \n")
-    
+
+    # Agregado 07/01/2022
+    # ingresar el año del pkg
+    # puede que al cambiar de año esten trabajando en un pkg del año anterior
+    year_pkg = input("Ingrese el año del PKG:")
+    while not anio_valido(year_pkg):
+        print("Ingrese un año de 4 digitos valido")
+        year_pkg = input("Ingrese el año del PKG:")
+
+    # CAMBIO EL NOMBRE DE LA BASELINE
+    if baseline.startswith("BSLN"):
+        nomBaseline = baseline[22:27].replace('-','.')
+    else:
+        nomBaseline = baseline[6:11].replace('-','.')
+
     year = datetime.datetime.now().strftime("%y")
     #guardo el json con los datos actualizados
     data = {'FECHA': str_dia+'/'+str_mes+'/'+year,
             'BASELINE': baseline,
-            'EXCEL': 'MR Col Ext V.'+baseline[22:27].replace('-','.')+'.xls',
+            'EXCEL': 'MR Col Ext V.'+ nomBaseline +'.xls',
             'SHEET': str_dia+'_'+str_mes,
             'PATH': dir_path,
             'CABECERA_ARCH': r'101 019101910 0000000102002071808C094101CREDICOP              1COEL S.A.                     0',
@@ -84,7 +98,7 @@ try:
     
     renombradoFecha(str_mes, str_dia, dir_path)
     time.sleep(1)
-    generar(int(str_mes), int(str_dia), pkg)
+    generar(int(str_mes), int(str_dia), pkg, year_pkg)
     time.sleep(1)
     from subida import subida_crecer
     subida_crecer(dir_path, str_mes, str_dia)
