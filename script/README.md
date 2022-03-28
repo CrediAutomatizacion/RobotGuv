@@ -49,6 +49,14 @@ y pip debe estar en la version 20.2.4, chequear con
 
 8. Copiar la nueva "versión" en la carpeta compartida '\\sfs-1\Testing\Tareas en curso\GUV\Documentacion\robot guv' (reemplazar el existente)
 
+**IMPORTANTE:** Actualmente, para la ejecución son necesarios los siguientes archivos
+-	robot.exe
+-	datos_entrada.json
+-	CH0dd072.191, CH1dd288.191, CR0dd002.191, CR1dd352.191, CRNdd129.191 (generados previamente)
+
 ### Cosas a mejorar:
 - En el futuro, se podría reemplazar el excel por otro tipo de archivo.
 - Usar archivos de configuración para generar los archivos necesarios.
+- Refactorizar el codigo
+- Agrupar los archivos que genera en una carpeta
+- Que el robot no necesite los archivos CH0, CH1, CR0, CR1 y CRN para ejecutar.
