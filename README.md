@@ -60,3 +60,4 @@ y pip debe estar en la version 20.2.4, chequear con
 - Refactorizar el codigo
 - Agrupar los archivos que genera en una carpeta
 - Que el robot no necesite los archivos CH0, CH1, CR0, CR1 y CRN para ejecutar.
+- Que el log muestre los errores para no recurrir a ejecutar desde pycharm para saber en que fallo
